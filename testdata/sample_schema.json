@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "name": "PhilSysID",
+    "description": "Verified credential using philsys as basis",
+    "properties": {
+      "type": "object",
+      "issuer": {
+        "type": "string"
+      },
+      "issuanceDate": {
+        "type": "string",
+        "format": "yyyy-MM-dd"
+      },
+      "credentialSubject": {
+        "type": "object",
+        "properties": {
+          "psn": {
+            "type": "string",
+            "title": "PhilSys No"
+          },
+          "issuedate": {
+            "type": "string",
+            "format": "yyyy-MM-dd",
+            "title": "Date Issued"
+          },
+          "firstname": {
+            "type": "string",
+            "title": "First Name"
+          },
+          "lastname": {
+            "type": "string",
+            "title": "Last Name"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "yyyy-MM-dd",
+            "title": "Birth Date"
+          }
+        },
+        "required": [
+          "psn",
+          "issuedate",
+          "firstname",
+          "lastname"
+        ]
+      }
+    },
+    "id": "https://filipizen.com/credentials/schemas/PhilSysID.json"
+  }

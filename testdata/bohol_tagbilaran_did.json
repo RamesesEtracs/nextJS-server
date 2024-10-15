@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/multikey/v1",
+    "https://w3id.org/security/suites/x25519-2020/v1"
+  ],
+  "id": "did:web:filipizen.com:issuers:bohol_tagbilaran",
+  "verificationMethod": [
+    {
+      "@context": "https://w3id.org/security/multikey/v1",
+      "id": "did:web:filipizen.com:issuers:bohol_tagbilaran#verificationKey",
+      "type": "Multikey",
+      "controller": "did:web:filipizen.com:issuers:bohol_tagbilaran",
+      "publicKeyMultibase": "zDnaevvtUDp5DUPiYFa3SSdKrEVBKxkUonTg8ua6DKdWivMN7"
+    }
+  ],
+  "authentication": [
+    "did:web:filipizen.com:issuers:bohol_tagbilaran#verificationKey"
+  ],
+  "assertionMethod": [
+    "did:web:filipizen.com:issuers:bohol_tagbilaran#verificationKey"
+  ],
+  "capabilityDelegation": [
+    "did:web:filipizen.com:issuers:bohol_tagbilaran#verificationKey"
+  ],
+  "capabilityInvocation": [
+    "did:web:filipizen.com:issuers:bohol_tagbilaran#verificationKey"
+  ],
+  "keyAgreement": [
+    {
+      "id": "did:web:filipizen.com:issuers:bohol_tagbilaran#agreementKey",
+      "type": "X25519KeyAgreementKey2020",
+      "controller": "did:web:filipizen.com:issuers:bohol_tagbilaran",
+      "publicKeyMultibase": "z6LSgLWG5J58Pp9nKsbqrYRA34fB3BQ7pdNU7ETW1axXRnz2"
+    }
+  ]
+}
