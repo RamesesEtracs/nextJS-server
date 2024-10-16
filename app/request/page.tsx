@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {socket} from '../socket'
 
 import { vprequest } from "@/testdata/vprequest";
 
@@ -22,37 +23,43 @@ export default function RequestQueue() {
 
   const router = useRouter();
 
+  // useEffect(() => {
+  //   const fetchDocument = async () => {
+  //     try {
+  //       const idc = localStorage.getItem("documentId");
+  //       setID(idc);
+  //       vprequest.challenge = JSON.stringify(idc);
+  //       const response = await axios.get("/rqueue/checkStatus/" + idc);
+
+  //       if (response.data.data && response.data.isExist === false) {
+  //         setExists(false);
+  //       } else if (response.data.isExist === false) {
+  //         setExists(response.data.isExist);
+  //       }
+  //     } catch (error) {
+  //       console.log("error is", error);
+  //     }
+  //   };
+  //   const interval = setInterval(() => {
+  //     fetchDocument();
+  //     //routeHandler();
+  //   }, 2000);
+  //   return () => clearInterval(interval);
+  // }, [router, exists]);
+
+
+
   useEffect(() => {
-    const fetchDocument = async () => {
-      try {
-        const idc = localStorage.getItem("documentId");
-        setID(idc);
-        vprequest.challenge = JSON.stringify(idc);
-        const response = await axios.get("/rqueue/checkStatus/" + idc);
-
-        if (response.data.data && response.data.isExist === false) {
-          setExists(false);
-        } else if (response.data.isExist === false) {
-          setExists(response.data.isExist);
-        }
-      } catch (error) {
-        console.log("error is", error);
+    socket.on("connect", () => {
+      console.log("Connecting....", socket.id);
+    });
+    socket.on("deleted", (data) => {
+      if(data.deletedCount === 1) {
+        router.push("/dummy-page");
       }
-    };
-    const interval = setInterval(() => {
-      fetchDocument();
-      routeHandler();
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [router, exists]);
+    });
+  }, []);
 
-  const routeHandler = () => {
-    if (!exists) {
-      router.push("/dummy-page");
-    } else {
-      return;
-    }
-  };
 
 
   useEffect(() => {
@@ -62,6 +69,7 @@ export default function RequestQueue() {
 
   const addQueueHandler = async () => {
     const challenge = getRandomUUID();
+    setID(challenge);
     try {
       const addQueueResult = await axios.post("/rqueue/addQueue", {
         challenge,
