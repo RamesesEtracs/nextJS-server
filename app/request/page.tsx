@@ -53,7 +53,7 @@ export default function RequestQueue() {
     socket.on("connect", () => {
       console.log("Connecting....", socket.id);
     });
-    socket.on("deleted", (data) => {
+    socket.on("documentDeleted", (data) => {
       if(data.deletedCount === 1) {
         router.push("/dummy-page");
       }

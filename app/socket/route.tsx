@@ -19,3 +19,21 @@ export async function POST(req: NextRequest) {
         console.log(error)
     };
 };
+
+
+export async function GET(req: NextRequest) {
+    try {
+        const rQueueCollection = await getRQueue();
+        const changeStream = rQueueCollection.watch([], { fullDocument: 'updateLookup' });
+
+        changeStream.on('change', (change) => {
+            console.log('Document deleted:', change);
+            return NextResponse.json({ change });
+            
+        });
+
+    } catch (error) {
+        console.log(error)
+    };
+};
+
