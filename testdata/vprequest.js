@@ -1,7 +1,7 @@
 export const vprequest = {
   "@context": ["https://www.w3.org/2018/credentials/v1"],
   type: "VerifiablePresentationRequest",
-  challenge: 'challenge',
+  challenge: "challenge",
   domain: "did:web:issuer:tagbilaran.com",
   credentialQuery: [
     {
@@ -19,6 +19,37 @@ export const vprequest = {
           civilstatus: {},
           gender: {},
           citizenship: {},
+        },
+      },
+    },
+
+    {
+      reason: "Please provide any identity credentials",
+      frame: {
+        type: "Umid",
+        credentialSubject: {
+          umidno: {},
+          profession: {},
+          dateissued: {},
+          firstname: {},
+          lastname: {},
+          middlename: {},
+          suffix: {},
+        },
+      },
+    },
+
+    {
+      reason: "Please provide any identity credentials",
+      frame: {
+        type: "Senior",
+        credentialSubject: {
+          seniorno: {},
+          dateissued: {},
+          firstname: {},
+          lastname: {},
+          middlename: {},
+          suffix: {},
         },
       },
     },

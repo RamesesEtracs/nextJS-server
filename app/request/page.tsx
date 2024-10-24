@@ -81,7 +81,7 @@ export default function RequestQueue() {
         <QRCode
           size={250}
           style={{ height: "auto" }}
-          value={'/rqueue/getVpRequest'}
+          value={JSON.stringify(vprequest)}
         />
       )}
     </div>
