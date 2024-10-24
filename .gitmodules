@@ -1,0 +1,3 @@
+[submodule "nextJS-server"]
+	path = nextJS-server
+	url = https://github.com/kazeeeeen/filipizen_wallet.git
